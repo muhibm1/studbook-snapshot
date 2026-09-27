@@ -1,0 +1,3 @@
+# LF everywhere, in the repository and in working copies. eval/test.sha256 pins the bytes of
+# eval/test.jsonl, so a CRLF conversion on checkout would look like tampering.
+* text=auto eol=lf

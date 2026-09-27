@@ -1,0 +1,24 @@
+# Pinned exactly (security baseline: no floating versions in a runtime path). Install with:
+#   python -m venv .venv
+#   .venv/Scripts/pip install -r requirements.txt --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple
+#
+# torch is pinned to 2.8.0+cpu, the newest build that loads on the development machine (AMD Ryzen
+# 3800X, Windows 10 19045): 2.9.0 and every later build fail in torch/__init__.py
+# _load_dll_libraries loading c10.dll with WinError 1114, VC++ redistributable current. Bisected
+# 2026-09-18 across 2.6.0, 2.8.0, 2.9.0, 2.9.1, 2.10.0, 2.13.0, 2.14.0. Moving 2.4.1 -> 2.8.0 closed
+# 11 of the 23 advisories pip-audit reported against torch; the ones needing 2.9.0 or later are
+# accepted in docs/ci.md, with the reason and what would close them.
+# transformers and sentence-transformers were held at 4.42.4 / 3.0.1 by an import-time regression
+# that no longer reproduces: 5.17.0 / 6.1.0 import and run on torch 2.8.0, and produce identical
+# outputs -- max embedding difference 0.0, max rerank-score difference 1.6e-10 on the same inputs.
+# Re-run that comparison (docs/ci.md) before bumping any of the three again.
+numpy==2.4.6
+torch==2.8.0
+sentence-transformers==6.1.0
+transformers==5.17.0
+psycopg[binary]==3.3.5
+pgvector==0.5.0
+anthropic==1.6.0
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+httpx==0.28.1

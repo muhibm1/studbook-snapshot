@@ -1,0 +1,22 @@
+# Keeps pins current; pip-audit in CI catches known advisories, this proposes the bumps.
+# torch is held: 2.9.0+ does not load on the development machine (requirements.txt, docs/ci.md),
+# so a bump PR for it would be red by design. Every other bump still runs CI, including the
+# model-output comparison it asks for (gate/numerics.py) before merging a model-stack change.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: torch
+        versions: [">=2.9.0"]
+      # numpy 2.5 requires Python 3.12; Studbook runs 3.11 (CI's setup-python). Lift this when the
+      # Python version moves. Its first PR could not even install.
+      - dependency-name: numpy
+        versions: [">=2.5.0"]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
