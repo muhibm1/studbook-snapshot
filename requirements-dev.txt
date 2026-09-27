@@ -1,4 +1,4 @@
 # Tools CI runs, not the service. Pinned exactly, like requirements.txt.
-ruff==0.16.8
+ruff==0.16.9
 pip-audit==2.10.1
 pyyaml==6.0.3
