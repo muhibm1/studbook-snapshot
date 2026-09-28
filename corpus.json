@@ -1,0 +1,7 @@
+{
+  "_comment": "Where each source repository lives on this machine. Override with STUDBOOK_CORPUS=<path to another file like this one>.",
+  "repos": {
+    "paddock-demo": "<path-to>/paddock-demo",
+    "workhorse": "<path-to>/WorkHorse"
+  }
+}

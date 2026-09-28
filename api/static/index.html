@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studbook</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Studbook</h1>
+    <p class="sub">Ask the engineering record. Every claim cites the document it came from &mdash; click a
+      <cite-ref>1</cite-ref> to read the exact passage. If the record can't answer, it says so.</p>
+  </header>
+
+  <form id="form">
+    <textarea id="q" placeholder="Why did control state move into the git common dir?" autofocus></textarea>
+    <div class="row">
+      <select id="repo"><option value="">All repositories</option></select>
+      <select id="change"><option value="">All changes</option></select>
+      <span class="hint" id="hint">Narrowing helps when a question says &ldquo;this change&rdquo;.</span>
+      <input id="key" type="password" placeholder="API key" autocomplete="off" spellcheck="false"
+             aria-label="API key" title="STUDBOOK_API_KEY on the server. Kept only in this tab.">
+      <button id="go" type="submit">Ask</button>
+    </div>
+  </form>
+
+  <div id="out"></div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

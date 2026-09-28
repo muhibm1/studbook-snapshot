@@ -1,0 +1,13 @@
+{
+  "name": "studbook-paddock-gate",
+  "private": true,
+  "type": "module",
+  "description": "Parity gate for porting Studbook retrieval into Paddock (Node): same models via ONNX, same SQL, held to the Python pipeline's published numbers.",
+  "scripts": {
+    "gate": "node gate.mjs"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "3.7.1",
+    "pg": "8.16.3"
+  }
+}
